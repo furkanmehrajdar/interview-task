@@ -6,11 +6,11 @@ const Header = () => {
     <header className="bg-[#0a4d8c] dark:bg-gray-800 text-white py-2 px-4 flex items-center justify-between border-b border-[#083b6d] dark:border-gray-700 transition-colors">
       <div className="flex items-center space-x-4">
         <div className="border border-white p-2 rounded">
-          <span className="text-2xl font-light tracking-wider">idab</span>
+          <span className="text-2xl font-light tracking-wider">TEST</span>
         </div>
         <div className="flex items-center bg-[#0a4d8c] dark:bg-gray-800 px-3 py-2 rounded">
           <i className="fas fa-address-card mr-2"></i>
-          <span className="font-medium">RMS - Profiles</span>
+          <span className="font-medium">Test - Profiles</span>
         </div>
       </div>
       <div className="flex items-center space-x-4">

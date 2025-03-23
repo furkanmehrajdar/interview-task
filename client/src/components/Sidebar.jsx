@@ -3,7 +3,7 @@ import { useLocation, Link } from 'wouter';
 
 const Sidebar = () => {
   const [location, navigate] = useLocation();
-  const [activeSection, setActiveSection] = useState('idabProfiles');
+  const [activeSection, setActiveSection] = useState('Test-Profiles');
   const [expandedPrice, setExpandedPrice] = useState(false);
 
   const toggleSection = (section) => {
@@ -29,19 +29,19 @@ const Sidebar = () => {
         <span className="ml-2 text-gray-700 dark:text-gray-200">Dashboard</span>
       </div>
       
-      {/* Idab Profiles Section */}
+      {/* Test-Profiles Section */}
       <div className="border-b dark:border-gray-700">
         <div 
-          onClick={() => toggleSection('idabProfiles')} 
+          onClick={() => toggleSection('Test-Profiles')} 
           className="p-4 flex items-center justify-between cursor-pointer transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-          style={{ backgroundColor: activeSection === 'idabProfiles' ? '#f3f4f6' : '', 
-                 color: activeSection === 'idabProfiles' ? '#1e6bb8' : '' }}
+          style={{ backgroundColor: activeSection === 'Test-Profiles' ? '#f3f4f6' : '', 
+                 color: activeSection === 'Test-Profiles' ? '#1e6bb8' : '' }}
         >
-          <span className="font-medium">Idab Profiles</span>
-          <i className={`fas fa-chevron-${activeSection === 'idabProfiles' ? 'up' : 'down'} text-sm text-gray-500 dark:text-gray-400`}></i>
+          <span className="font-medium">Test-Profiles</span>
+          <i className={`fas fa-chevron-${activeSection === 'Test-Profiles' ? 'up' : 'down'} text-sm text-gray-500 dark:text-gray-400`}></i>
         </div>
         
-        {activeSection === 'idabProfiles' && (
+        {activeSection === 'Test-Profiles' && (
           <>
             <Link href="/">
               <div className="bg-blue-100 dark:bg-blue-900 p-4 border-l-4 border-[#1e6bb8] flex items-center transition-colors cursor-pointer">
@@ -89,17 +89,17 @@ const Sidebar = () => {
           <>
             <div className="pl-8 pr-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center cursor-pointer transition-colors">
               <i className="fas fa-list text-gray-500 dark:text-gray-400"></i>
-              <span className="ml-2 text-gray-700 dark:text-gray-200 text-sm">Jobs list</span>
+              <span className="ml-2 text-gray-700 dark:text-gray-200">Jobs list</span>
             </div>
             
             <div className="pl-8 pr-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center cursor-pointer transition-colors">
               <i className="fas fa-tag text-gray-500 dark:text-gray-400"></i>
-              <span className="ml-2 text-gray-700 dark:text-gray-200 text-sm">Job category</span>
+              <span className="ml-2 text-gray-700 dark:text-gray-200">Job category</span>
             </div>
             
             <div className="pl-8 pr-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center cursor-pointer transition-colors">
               <i className="fas fa-user-tie text-gray-500 dark:text-gray-400"></i>
-              <span className="ml-2 text-gray-700 dark:text-gray-200 text-sm">Job role</span>
+              <span className="ml-2 text-gray-700 dark:text-gray-200">Job role</span>
             </div>
             
             <div 
@@ -108,7 +108,7 @@ const Sidebar = () => {
             >
               <div className="flex items-center">
                 <i className="fas fa-dollar-sign text-gray-500 dark:text-gray-400"></i>
-                <span className="ml-2 text-gray-700 dark:text-gray-200 text-sm">Price plan</span>
+                <span className="ml-2 text-[#1e6bb8] dark:text-blue-400 ">Price plan</span>
               </div>
               <i className={`fas fa-chevron-${expandedPrice ? 'up' : 'down'} text-xs text-gray-500 dark:text-gray-400`}></i>
             </div>
@@ -118,13 +118,13 @@ const Sidebar = () => {
                 <div className="pl-12 pr-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center cursor-pointer transition-colors">
                   <i className="fas fa-building text-gray-500 dark:text-gray-400 text-xs"></i>
                   <Link href="/company-plan">
-                    <span className="ml-2 text-gray-700 dark:text-gray-200 text-sm">Company Plan</span>
+                    <span className="ml-2 text-gray-700 dark:text-gray-200">Company Plan</span>
                   </Link>
                 </div>
                 
                 <div className="pl-12 pr-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center cursor-pointer transition-colors">
                   <i className="fas fa-user text-gray-500 dark:text-gray-400 text-xs"></i>
-                  <span className="ml-2 text-gray-700 dark:text-gray-200 text-sm">Candidate Plan</span>
+                  <span className="ml-2 text-gray-700 dark:text-gray-200">Candidate Plan</span>
                 </div>
               </>
             )}
