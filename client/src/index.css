@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-[#f5f7fa] text-foreground;
+    @apply font-sans antialiased bg-[#f5f7fa] text-foreground dark:bg-gray-900 dark:text-gray-100;
   }
 }
 
@@ -16,11 +16,27 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* Apply dark mode transitions */
+.dark body {
+  color-scheme: dark;
+}
+
+/* Dark mode CSS */
+:root {
+  --primary: #1e6bb8;
+  --primary-dark: #0a4d8c;
+}
+
+.dark {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+}
+
 /* Custom toggle switch styling */
 .toggle-checkbox:checked {
   right: 0;
-  border-color: #0a4d8c;
+  border-color: var(--primary-dark);
 }
 .toggle-checkbox:checked + .toggle-label {
-  background-color: #0a4d8c;
+  background-color: var(--primary-dark);
 }
