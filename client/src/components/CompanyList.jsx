@@ -2,15 +2,17 @@ import React, { useState, useMemo } from 'react';
 import { useLocation } from 'wouter';
 import FilterControls from './FilterControls';
 import CompanyCard from './CompanyCard';
-import { companies } from '../data/companies';
+import { companies as initialCompanies } from '../data/companies';
 
 const CompanyList = () => {
+  const [companies, setCompanies] = useState(initialCompanies);
   const [searchTerm, setSearchTerm] = useState('');
   const [organizationType, setOrganizationType] = useState('All');
   const [industryType, setIndustryType] = useState('All');
   const [emailVerification, setEmailVerification] = useState('All');
   const [sortBy, setSortBy] = useState('Latest');
   const [, navigate] = useLocation();
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   const filteredCompanies = useMemo(() => {
     return companies
@@ -42,14 +44,33 @@ const CompanyList = () => {
             return 0;
         }
       });
-  }, [searchTerm, organizationType, industryType, emailVerification, sortBy]);
+  }, [companies, searchTerm, organizationType, industryType, emailVerification, sortBy]);
 
   const handleCreateCompany = () => {
     navigate('/create-company');
   };
 
+  const handleDeleteCompany = (companyId) => {
+    // In a real app, this would call an API to delete the company
+    setCompanies(prevCompanies => prevCompanies.filter(company => company.id !== companyId));
+    // Show success message
+    setDeleteSuccess(true);
+    setTimeout(() => {
+      setDeleteSuccess(false);
+    }, 3000);
+  };
+
   return (
     <div>
+      {deleteSuccess && (
+        <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded relative mb-4 transition-colors">
+          <span className="block sm:inline">Company deleted successfully.</span>
+          <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setDeleteSuccess(false)}>
+            <i className="fas fa-times"></i>
+          </span>
+        </div>
+      )}
+
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100 border-b-2 border-[#1e6bb8] pb-1 inline-block">
@@ -88,9 +109,19 @@ const CompanyList = () => {
       </div>
 
       {/* Company List */}
-      {filteredCompanies.map(company => (
-        <CompanyCard key={company.id} company={company} />
-      ))}
+      {filteredCompanies.length > 0 ? (
+        filteredCompanies.map(company => (
+          <CompanyCard 
+            key={company.id} 
+            company={company} 
+            onDelete={handleDeleteCompany} 
+          />
+        ))
+      ) : (
+        <div className="bg-white dark:bg-gray-800 p-8 text-center text-gray-600 dark:text-gray-400 rounded-b-md transition-colors">
+          No companies found matching your filters.
+        </div>
+      )}
     </div>
   );
 };

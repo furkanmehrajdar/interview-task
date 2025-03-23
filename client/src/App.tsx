@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/Dashboard";
 import CreateCompanyPage from "./components/CreateCompanyPage";
+import CompanyPricePlan from "./components/CompanyPricePlan";
 import { useEffect } from "react";
 
 function Router() {
@@ -12,6 +13,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Dashboard} />
       <Route path="/create-company" component={CreateCompanyPage} />
+      <Route path="/company-plan" component={CompanyPricePlan} />
       <Route component={NotFound} />
     </Switch>
   );
